@@ -11,7 +11,7 @@ export const getHealthRecords = async () => {
   }
 };
 export const getHealthRecord = async (id) => {
-  const response = await axios.get(BACKEND_URL + `/${id}`);
+  const response = await axios.get(BACKEND_URL + `${id}`);
 
   if (response.status == 200) {
     return response.data.healthRecord;
@@ -113,7 +113,7 @@ export const updateHealthRecord = async (
       bloodPressure,
       bodyTemperature,
     };
-    const response = await axios.put(BACKEND_URL + `/${id}`, data, {
+    const response = await axios.put(BACKEND_URL + `${id}`, data, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -131,7 +131,7 @@ export const updateHealthRecord = async (
 
 export const deleteHealthRecord = async (id) => {
   try {
-    const response = await axios.delete(BACKEND_URL + `/${id}`);
+    const response = await axios.delete(BACKEND_URL + `${id}`);
 
     if (response.status == 200) {
       toast.success(response.data.message);

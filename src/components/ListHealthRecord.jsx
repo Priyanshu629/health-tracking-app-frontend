@@ -8,6 +8,7 @@ const ListHealthRecord = () => {
     const [healthRecords, setHealthRecords] = useState(null)
     const [filteredRecords, setFilteredRecords] = useState([]);
     const [searchDate, setSearchDate] = useState("")
+    const [noRecordsFound, setNoRecordsFound] = useState(false);
 
     const getData = async () => {
         const response = await getHealthRecords()
@@ -20,12 +21,14 @@ const ListHealthRecord = () => {
         const selectedOption = e.target.value
         const filteredRecord = handleFilter(selectedOption, healthRecords)
         setFilteredRecords(filteredRecord)
+
+        setNoRecordsFound(filteredRecord.length === 0)
     }
 
 
     useEffect(() => {
         getData()
-        
+
     }, [])
 
 
@@ -58,12 +61,14 @@ const ListHealthRecord = () => {
 
             <h1 className='text-center text-xl my-3 p-1'>List of Added Health Records</h1>
             <section className='w-[95%] mx-auto  p-2 flex flex-wrap'>
-                { filteredRecords && (
+                {filteredRecords && (
                     <>
                         {filteredRecords.filter(record => {
                             if (searchDate === "") return true;
                             return formatDate(record.date) === searchDate;
-                        }).length === 0 && searchDate !== "" && alert("No records found")}
+                        }).length === 0 && searchDate !== "" && (
+                                <p className='text-red-500 text-center'>No records found for the selected date.</p>
+                            )}
 
                         {filteredRecords.filter(record => {
                             if (searchDate === "") return true;
@@ -74,7 +79,9 @@ const ListHealthRecord = () => {
                     </>
                 )}
             </section>
-
+            {noRecordsFound && (
+                <p className='text-red-500 text-center'>No records found based on the current filter.</p>
+            )}
         </main>
     )
 }

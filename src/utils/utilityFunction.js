@@ -87,18 +87,16 @@ export const validateBloodPressure = (input) => {
 
 export const handleFilter = (selectedOption, healthRecords) => {
   let filteredRecord = healthRecords;
-  if (selectedOption == "less than equal 60") {
-    filteredRecord = healthRecords.filter((record) => record?.heartRate <= 60);
-    return filteredRecord;
-  } else if (selectedOption == "more than equal 100") {
-    filteredRecord = healthRecords.filter((record) => record?.heartRate >= 60);
-    return filteredRecord;
-  } else if (selectedOption == "between 60 to 100") {
-    filteredRecord = healthRecords.filter(
-      (record) => record?.heartRate > 60 && record?.heartRate < 100
-    );
-    return filteredRecord;
-  } else if(selectedOption=="no-filter"){
-    return filteredRecord;
-  }
-};
+
+
+  switch (selectedOption) {
+    case "less than equal 60":
+      return healthRecords.filter((record) => record?.heartRate <= 60);
+    case "more than equal 100":
+      return healthRecords.filter((record) => record?.heartRate >= 100);
+    case "between 60 to 100":
+      return healthRecords.filter((record) => record?.heartRate > 60 && record?.heartRate < 100);
+    case "no-filter":
+      return filteredRecord;
+}
+}

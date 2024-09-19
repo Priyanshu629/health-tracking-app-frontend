@@ -1,7 +1,7 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 import { validateBloodPressure } from "./utilityFunction";
-const BACKEND_URL = "https://health-tracking-app-inqk.onrender.com/health-records/"
+const BACKEND_URL = "https://health-tracking-app-inqk.onrender.com/api/v1/health-records/"
 
 export const getHealthRecords = async () => {
   const response = await axios.get(BACKEND_URL);

@@ -27,6 +27,7 @@ const ListHealthRecord = () => {
         const filteredRecord = handleFilter(selectedOption, recordsToFilter);
         setFilteredRecords(filteredRecord);
     };
+    
 
     useEffect(() => {
         getData();

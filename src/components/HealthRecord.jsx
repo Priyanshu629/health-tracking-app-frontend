@@ -5,7 +5,7 @@ const HealthRecord = ({ _id, date,heartRate,bloodPressure ,bodyTemperature }) =>
  
   
   return (
-    <div className='w-[300px]  font-bold border-2 border-green-500 rounded-md p-2 flex flex-col cursor-pointer hover:border-yellow-700 italic mx-2 max-sm:my-3'>
+    <div className='w-[300px]  font-bold border-2 border-green-500 rounded-md p-2 flex flex-col cursor-pointer hover:border-yellow-700 italic my-2 mx-2 max-sm:my-3'>
       <span className='m-2'>Date : {date} </span>
       <span className='m-2'>Heart Rate : {heartRate} </span>
       <span className='m-2'>Blood Pressure : {bloodPressure}</span>
